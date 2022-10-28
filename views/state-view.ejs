@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+<main>
+
+  <div class="container py-4">
+    <header class = "pb-4 ">
+      <%- include('../partials/header'); %>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold"><%= data.name %></h1>
+        <p class="col-md-8 fs-4">Open GIS Data for <%= data.name %> (<%= state %>)</p>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-12 mb-4">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <h1>Data</h1>
+            <h2>APIs</h2>
+
+            <% for (item of data.data.api_list){ console.log(item);%>
+                <% if (item.server_owner){ %>
+                    <h3><%= item.server_owner %></h3>
+                    <p>Organization
+                <% } %>
+                <% if (item.government_town){ %>
+                    <h3><%= item.government_town %></h3>
+                    <p>Town
+                <% } %>
+                <% if (item.government_county){ %>
+                    <h3><%= item.government_county %></h3>
+                    <p>County
+                <% } %>
+                <% if (item.government_city){ %>
+                    <h3><%= item.government_town %></h3>
+                    <p>City
+                <% } %>
+                <br>
+                <a href = "<%=item.server_url %>" class = "text-decoration-none"><%=item.server_url %></a>
+                </p>
+            <%}%>
+
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <%- include('../partials/footer'); %>
+    </footer>
+
+  </div>
+
+
+</main>
+
+  <%- include('../partials/scripts'); %>
+
+</body>
+</html>
